@@ -1,0 +1,23 @@
+{
+  "student": {
+    "fullname": "นายคุณัชญ์ สิทธิเนตร",
+    "id": "6630200071",
+    "major_id": "S05",
+    "major": "วิทยาการคอมพิวเตอร์",
+    "old_school": "ประจวบวิทยาลัย"
+  },
+  "subjects": [
+    {
+      "id": "01418214",
+      "name": "Practicum in Software Development",
+      "credit": "1",
+      "grade": "A"
+    },
+    {
+      "id": "01418221",
+      "name": "Fundamentals of Database Systems",
+      "credit": "3",
+      "grade": "B+"
+    }
+  ]
+}

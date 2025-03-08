@@ -1,0 +1,29 @@
+@keyframes neonBorder {
+  0% { box-shadow: 0 0 5px var(--btn-color), 0 0 10px var(--btn-color) inset; }
+  50% { box-shadow: 0 0 15px var(--btn-color), 0 0 20px var(--btn-color) inset; }
+  100% { box-shadow: 0 0 5px var(--btn-color), 0 0 10px var(--btn-color) inset; }
+}
+
+@keyframes dropDown {
+  0% {
+      opacity: 0;
+      transform: translateY(-10%);
+  }
+  50% {
+      opacity: 0.5;
+      transform: translateY(10%);
+  }
+  100% {
+      opacity: 1;
+      transform: translateY(0%);
+  }
+}
+
+@keyframes typing {
+  from { width: 0% }
+  to { width: 105% }
+}
+
+@keyframes blinking {
+  50% { border-color: transparent; }
+}
