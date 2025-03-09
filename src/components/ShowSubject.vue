@@ -1,14 +1,17 @@
 <script setup lang="ts">
-import { onMounted, ref, computed, watch } from 'vue';
-import { type typeSubject } from '@/types/useTypes'
+import { onMounted, ref, computed } from 'vue';
+import { type typeSubject, type typeUser } from '@/types/useTypes'
 import { useSubjectStore } from '@/stores/subjects';
+import { useUserStore } from '@/stores/user';
 import Modal from '@/components/Modal.vue';
 
 const emits = defineEmits(['showAlert']);
 
+const { getUser } = useUserStore();
 const { getSubject, setSubject, deleteSubject, addSubject } = useSubjectStore();
 
 const subjectData = ref<typeSubject[]>([{ id: '', name: '', credit: '', grade: '' }]);
+const userData = ref<typeUser>({ fullname: '', id: '', major_id: '', major: '', old_school: '' });
 const subjectEdit = computed<typeSubject>(() => {
   if (selectIndex.value > -1) {
     return JSON.parse(JSON.stringify(subjectData.value[selectIndex.value]));
@@ -112,6 +115,10 @@ const clickEditSubject = async() => {
 onMounted(async () => {
     await useHandleGetSubject();
 
+    const data = await getUser();
+
+    if (data) userData.value = data;
+
     setTimeout(() => {
         show.value = true;
     }, 2400);
@@ -121,7 +128,7 @@ onMounted(async () => {
 <template>
     <div v-if="show" class="container pt-3">
         <div class="d-flex justify-content-center">
-            <div class="flex-md-row align-items-center p-4 rounded-3" style="background-color: rgba(0, 0, 0, 0.2); backdrop-filter: blur(10px); max-width: 1100px; width: 90%;">
+            <div v-if="userData.fullname" class="flex-md-row align-items-center p-4 rounded-3" style="background-color: rgba(0, 0, 0, 0.2); backdrop-filter: blur(10px); max-width: 1100px; width: 90%;">
                 <div class="d-flex">
                     <div class="d-flex align-items-center" style="display: inline-block;">
                         <div class="typed-out">รายวิชา จำนวน {{ subjectData.length }} วิชา</div>
@@ -151,6 +158,9 @@ onMounted(async () => {
                 <div v-else>
                     <p class="fw-bolder fs-5 pt-5 text-white">ไม่พบข้อมูลวิชา</p>
                 </div>
+            </div>
+            <div v-else>
+                <p class="fw-bolder fs-5 pt-5 text-white">ไม่พบข้อมูลรายวิชา โปรดตรวจสอบ <span class="fw-normal fs-6 text-decoration-underline">data/db.json</span></p>
             </div>
         </div>
     </div>
