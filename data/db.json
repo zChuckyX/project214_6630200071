@@ -4,7 +4,7 @@
     "id": "6630200071",
     "major_id": "S05",
     "major": "วิทยาการคอมพิวเตอร์",
-    "old_school": "ประจวบวิทยาลัย"
+    "old_school": "ประจวบวิทยาลัยa"
   },
   "subjects": [
     {
@@ -18,6 +18,42 @@
       "name": "Fundamentals of Database Systems",
       "credit": "3",
       "grade": "B+"
+    },
+    {
+      "id": "01418261",
+      "name": "Fundamentals of Artificial Intelligence",
+      "credit": "3",
+      "grade": "B"
+    },
+    {
+      "id": "01418236",
+      "name": "Operating Systems",
+      "credit": "3",
+      "grade": "B+"
+    },
+    {
+      "id": "01355102",
+      "name": "English for University Life",
+      "credit": "3",
+      "grade": "B+"
+    },
+    {
+      "id": "01418232",
+      "name": "Algorithm Design and Analysis",
+      "credit": "3",
+      "grade": "A"
+    },
+    {
+      "id": "01417322",
+      "name": "Basic Linear Algebra",
+      "credit": "3",
+      "grade": "A"
+    },
+    {
+      "id": "01418222",
+      "name": "Enterprise Information System",
+      "credit": "3",
+      "grade": "A"
     }
   ]
 }

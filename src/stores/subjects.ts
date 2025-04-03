@@ -7,13 +7,18 @@ export const useSubjectStore = defineStore('subject', () => {
 
   const setSubject = async(data: typeSubject, subject_id: string) => {
     try {
-        const response = await fetch(`http://localhost:3000/subjects/${subject_id}`, {
-            method: 'PUT', 
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(data)
-        });
-
-        if (!response.ok) throw ('ไม่สามารถแก้ไขวิชาเรียนได้ โปรดตรวจสอบ');
+        if (data.id === subject_id) {
+            const response = await fetch(`http://localhost:3000/subjects/${subject_id}`, {
+                method: 'PUT', 
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            });
+            if (!response.ok) throw ('ไม่สามารถแก้ไขวิชาเรียนได้ โปรดตรวจสอบ');
+        } else {
+            await deleteSubject(subject_id); 
+            await new Promise(res => setTimeout(res, 100)); 
+            await addSubject(data); 
+        }
     } catch (error) {
         alert(error);
     }
